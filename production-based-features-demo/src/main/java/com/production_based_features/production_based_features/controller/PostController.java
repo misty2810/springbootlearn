@@ -10,12 +10,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/posts")
+@RequiredArgsConstructor
 public class PostController {
     private final PostService postService;
 
-    public PostController(PostService postService) {
-        this.postService = postService;
-    }
     @GetMapping
     public List<postDto> getAllPosts(){
         return postService.getAllPosts();
@@ -23,5 +21,14 @@ public class PostController {
     @PostMapping
     public postDto createNewPost(@RequestBody postDto inputpost){
         return postService.createNewPost(inputpost);
+    }
+    @GetMapping("/{postId}")
+    public postDto getPostById(@PathVariable Long postId) {
+        return postService.getPostById(postId);
+    }
+
+    @PutMapping("{postId}")
+    public postDto updatePost(@RequestBody postDto inputPost,@PathVariable Long postId ) {
+        return postService.updatePost(inputPost, postId);
     }
 }
