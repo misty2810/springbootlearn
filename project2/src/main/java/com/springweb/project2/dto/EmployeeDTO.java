@@ -20,8 +20,8 @@ public class EmployeeDTO {
     private String name;
     private String email;
     private Integer age;
-    @EmployeeRoleValidation
-    private String role;
+//    @EmployeeRoleValidation
+//    private String role;
     private LocalDate dateofjoining;
 
     @JsonProperty("isActive")
